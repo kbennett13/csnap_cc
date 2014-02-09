@@ -1,9 +1,11 @@
 (function () {
     return function (percent) {
         var dest, delta=radians(this.heading);
+
+        var width = Math.abs(this.left()-this.right());
     
         var newX = this.position().x + 
-            (this.parent.width() * percent/500) * this.scale;
+            (width * percent/100) * this.scale;
         var newY = this.position().y;
         var dist = Math.sqrt(Math.pow(this.position().x-newX, 2));
 

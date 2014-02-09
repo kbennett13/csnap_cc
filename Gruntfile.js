@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         watch: {
             scripts: {
                 files: ['Gruntfile.js', 'src/**/*.js', 'src/**/*.json'],
-                tasks: ['jshint', 'concat'],
+                tasks: ['jshint', 'concat', 'zip'],
                 options: {
                     spawn: false,
                 }
