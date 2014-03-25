@@ -6,7 +6,6 @@
         var height = this.costume.contents.height * this.scale;
 
         var newX=0, newY=0, dist=0;
-        console.log(direction[0]);
 
         if(direction[0] === 'height') {
             newY = this.position().y +
