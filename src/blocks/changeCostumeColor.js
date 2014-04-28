@@ -1,9 +1,11 @@
 (function () {
 	return function (num) {
-		var currentPixels = this.image.getContext('2d')
+		this.costumeColor = num;
+		this.colorChange = true;
+		currentPixels = this.image.getContext('2d')
 			.getImageData(0, 0, this.width(), this.height());
 		var hsv = this.color.hsv();
-
+		
 		hsv[0] = Math.max(Math.min(+num || 0, 100), 0) / 100;
 		hsv[1] = 1; // we gotta fix this at some time
 		this.color.set_hsv.apply(this.color, hsv);
