@@ -1,9 +1,10 @@
 (function () {
 	return function (num) {
 
-        this.originalPixels = this.image.getContext('2d').createImageData(this.width(), this.height());
-		this.originalPixels = this.image.getContext('2d').getImageData(0, 0, this.width(), this.height());
-
+        if(!this.originalPixels) {
+           this.originalPixels = this.image.getContext('2d').createImageData(this.width(), this.height());
+		   this.originalPixels = this.image.getContext('2d').getImageData(0, 0, this.width(), this.height());
+        }
 		this.costumeColor = num;
 		this.colorChange = true;
 		currentPixels = this.image.getContext('2d')
