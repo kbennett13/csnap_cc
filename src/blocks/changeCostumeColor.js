@@ -1,20 +1,22 @@
 (function () {
 	return function (num) {
 
-        if(!this.originalPixels) {
-           this.originalPixels = this.image.getContext('2d').createImageData(this.width(), this.height());
-		   this.originalPixels = this.image.getContext('2d').getImageData(0, 0, this.width(), this.height());
-        }
+		if(!this.originalPixels) {
+			this.originalPixels = this.costume.contents.getContext('2d')
+				.getImageData(0, 0, this.costume.contents.width,
+					this.costume.contents.height);
+		}
 		this.costumeColor = num;
 		this.colorChange = true;
-		currentPixels = this.image.getContext('2d')
-			.getImageData(0, 0, this.width(), this.height());
+		currentPixels = this.costume.contents.getContext('2d')
+			.getImageData(0, 0,
+				this.costume.contents.width, this.costume.contents.height);
 		var hsv = this.color.hsv();
-		
+
 		hsv[0] = Math.max(Math.min(+num || 0, 100), 0) / 100;
 		hsv[1] = 1; // we gotta fix this at some time
 		this.color.set_hsv.apply(this.color, hsv);
-		
+
 		for(var I = 0, L = this.originalPixels.data.length; I < L; I += 4){
 			if(currentPixels.data[I + 3] > 0){
 				// If it's not a transparent pixel
@@ -26,7 +28,8 @@
 					data[I + 2] / 255 * this.color.b;
 			}
 		}
-		this.image.getContext('2d').putImageData(currentPixels, 0, 0);
+		this.costume.contents.getContext('2d')
+			.putImageData(currentPixels, 0, 0);
 		this.changed();
 	};
 }());
