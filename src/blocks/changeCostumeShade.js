@@ -1,12 +1,13 @@
 (function () {
 	return function (num) {
-      if(!this.costumeColor[this.getCostumeIdx()]) {
-         this.costumeColor[this.getCostumeIdx()] = new Color(0,0,0);
+      if(!this.costumes.contents[this.getCostumeIdx()-1].costumeColor) {
+         this.costumes.contents[this.getCostumeIdx()-1].costumeColor = new Color(0,0,0);
       }
-		var hsv = this.costumeColor[this.getCostumeIdx()].hsv();
+		var hsv = this.costumes.contents[this.getCostumeIdx()-1].costumeColor.hsv();
       
 		hsv[1] = 1; 
 		hsv[2] = Math.max(Math.min(+num || 0, 100), 0) / 100;
-		this.costumeColor[this.getCostumeIdx()].set_hsv.apply(this.costumeColor[this.getCostumeIdx()], hsv);
+		this.costumes.contents[this.getCostumeIdx()-1].costumeColor.set_hsv.
+         apply(this.costumes.contents[this.getCostumeIdx()-1].costumeColor, hsv);
 	};
 }());
