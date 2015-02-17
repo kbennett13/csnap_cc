@@ -16,5 +16,11 @@
 				"category": "looks",
 				"spec": "set costume shade to %n",
 				"defaults": [100]
-	}
+	},
+  "displayText": {
+    "type": "command",
+    "category": "looks",
+    "spec": "display %s",
+    "defaults": ['Hello!']
+  }
 }
